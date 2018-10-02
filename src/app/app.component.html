@@ -1,10 +1,2 @@
-<select [(ngModel)]="region" (change)="onChange()">
-  <ng-container>
-    <option disabled>Region selector</option>
-    <option  [ngValue]="'siebel'">Siebel</option>
-    <option [ngValue]="'smax'">Smax</option>
-  </ng-container>
-</select>
-
 <a [routerLink]="['/assignment']">Assignment</a>
 <router-outlet></router-outlet>

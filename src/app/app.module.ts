@@ -1,4 +1,3 @@
-import { ConfigService } from './config.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER, ComponentFactoryResolver } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +12,7 @@ import { SiebelAssignmentComponentService } from './siebel/siebel-assignment-com
 import { SmaxAssignmentComponentService } from './smax/smax-assignment-component.service';
 import { AssignmentComponentService } from './assignment-component.service';
 
-const ROUTES: Routes = [ { path: 'assignment', component: AssignmentComponent } ];
+const ROUTES: Routes = [{ path: 'assignment', component: AssignmentComponent }];
 
 let region;
 
@@ -40,22 +39,21 @@ export function regionFactory(resolver: ComponentFactoryResolver, http: HttpClie
 		SmaxAssignmentComponent,
 		SiebelAssignmentComponent
 	],
-	imports: [ BrowserModule, RouterModule.forRoot(ROUTES), FormsModule, HttpClientModule ],
+	imports: [BrowserModule, RouterModule.forRoot(ROUTES), FormsModule, HttpClientModule],
 	providers: [
 		{
 			provide: APP_INITIALIZER,
 			useFactory: configFactory,
-			deps: [ HttpClient ],
+			deps: [HttpClient],
 			multi: true
 		},
 		{
 			provide: AssignmentComponentService,
 			useFactory: regionFactory,
-			deps: [ ComponentFactoryResolver, HttpClient ]
+			deps: [ComponentFactoryResolver, HttpClient]
 		},
-		ConfigService
 	],
-	entryComponents: [ SmaxAssignmentComponent, SiebelAssignmentComponent ],
-	bootstrap: [ AppComponent ]
+	entryComponents: [SmaxAssignmentComponent, SiebelAssignmentComponent],
+	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
